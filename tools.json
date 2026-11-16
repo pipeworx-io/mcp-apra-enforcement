@@ -1,0 +1,48 @@
+[
+  {
+    "name": "apra_enforcement_search",
+    "description": "Search Australian Prudential Regulation Authority (APRA) enforcement against banks, insurers and superannuation trustees: court enforceable undertakings it accepted (from 2005) and infringement notices it served (from 2019), such as OnePath Custodians, ANZ, United Super (Cbus), Allianz, Equity Trustees, BNK Banking. Each hit gives the action id, entity, date, Act and section (Superannuation Industry (Supervision) Act, Banking Act, Insurance Act, FSCODA), the penalty in A$, the conduct, the expiry of the undertaking and the APRA media release. Filter by entity name or a word in the conduct (e.g. \"MySuper\", \"Cbus\", \"data reporting\"), by year, or by register. Individuals are dropped and counted in individuals_dropped. Example: query=\"OnePath\".",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "Word in the entity name, conduct or media release title (e.g. \"OnePath\", \"MySuper\", \"Westpac\"). Optional."
+        },
+        "year": {
+          "type": "number",
+          "description": "Only actions dated in this year (e.g. 2024). Optional."
+        },
+        "register": {
+          "type": "string",
+          "enum": [
+            "all",
+            "enforceable_undertakings",
+            "infringement_notices"
+          ],
+          "description": "Which APRA register to read (default all)."
+        },
+        "limit": {
+          "type": "number",
+          "description": "Actions to return (1-50, default 20)."
+        }
+      }
+    }
+  },
+  {
+    "name": "apra_enforcement_get",
+    "description": "Get one Australian Prudential Regulation Authority enforcement action against an entity by its id (such as in-2024-07-17-onepath-custodians-pty-limited or eu-2025-04-02-australia-and-new-zealand-banking-group-ltd, from apra_enforcement_search): the entity, date, Act and section, the alleged conduct and penalty (infringement notice), the expiry, the undertaking documents, the variations and the linked media releases. An unknown id returns found:false. Example: id=\"in-2024-07-17-onepath-custodians-pty-limited\".",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Action id such as in-2024-07-17-onepath-custodians-pty-limited, as returned by apra_enforcement_search."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    }
+  }
+]

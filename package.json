@@ -1,0 +1,33 @@
+{
+  "name": "@pipeworx/mcp-apra-enforcement",
+  "version": "0.1.0",
+  "description": "apra-enforcement -- Australian Prudential Regulation Authority (APRA) enforcement against regulated entities: the enforceable undertakings it has accepted and the infringement notices it has served, with the Act and section, the conduct, the penalty and the linked media release.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./tools.json": "./tools.json",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "mcp-apra-enforcement": "bin/cli.js"
+  },
+  "files": ["bin/", "lib/", "tools.json", "server.json"],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": ["mcp", "mcp-server", "model-context-protocol", "pipeworx", "apra-enforcement"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pipeworx-io/mcp-apra-enforcement.git"
+  },
+  "mcpName": "io.github.pipeworx-io/apra-enforcement",
+  "pipeworx": {
+    "mode": "gateway",
+    "slug": "apra-enforcement",
+    "gatewaySlug": "apra-enforcement",
+    "sourceHash": "v1-f8131ea69707618b5c36879af3da2399ee0b45f799f5169506dad5b9a903418e",
+    "sourceCommit": "874331b0c46b151f9264bd14840631427a7721c1"
+  }
+}
